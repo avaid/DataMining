@@ -1,0 +1,3 @@
+create table Results as (select distinct record_id,label from "TestData")
+
+select record_id,label from Results order by record_id; 

@@ -1,0 +1,138 @@
+-- Table: "Attr_Label_Count"
+
+-- DROP TABLE "Attr_Label_Count";
+
+CREATE TABLE "Attr_Label_Count"
+(
+  attr_id integer,
+  attr_value integer,
+  label integer,
+  count integer
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "Attr_Label_Count"
+  OWNER TO postgres;
+
+  
+  
+  -- Table: "LabelCount"
+
+-- DROP TABLE "LabelCount";
+
+CREATE TABLE "LabelCount"
+(
+  label integer,
+  count integer
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "LabelCount"
+  OWNER TO postgres;
+
+  
+  
+  -- Table: "TestData"
+
+-- DROP TABLE "TestData";
+
+CREATE TABLE "TestData"
+(
+  record_id integer,
+  attr_id integer,
+  attr_value integer,
+  label integer DEFAULT 0
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "TestData"
+  OWNER TO postgres;
+
+-- Index: index_label
+
+-- DROP INDEX index_label;
+
+CREATE INDEX index_label
+  ON "TestData"
+  USING btree
+  (label);
+
+-- Index: index_test
+
+-- DROP INDEX index_test;
+
+CREATE INDEX index_test
+  ON "TestData"
+  USING btree
+  (record_id, attr_id, attr_value);
+
+
+  
+  -- Table: "TrainingData"
+
+-- DROP TABLE "TrainingData";
+
+CREATE TABLE "TrainingData"
+(
+  record_id integer,
+  attr_id integer,
+  attr_value integer,
+  label integer
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "TrainingData"
+  OWNER TO postgres;
+
+  
+  
+  -- Table: probability
+
+-- DROP TABLE probability;
+
+CREATE TABLE probability
+(
+  attr_id integer, -- 
+  attr_value integer,
+  prob_label1 double precision DEFAULT 0,
+  prob_label2 double precision DEFAULT 0,
+  prob_label3 double precision DEFAULT 0,
+  prob_label4 double precision DEFAULT 0,
+  prob_label5 double precision DEFAULT 0,
+  prob_label6 double precision DEFAULT 0,
+  prob_label7 double precision DEFAULT 0,
+  prob_label8 double precision DEFAULT 0,
+  prob_label9 double precision DEFAULT 0,
+  prob_label10 double precision DEFAULT 0,
+  prob_label11 double precision DEFAULT 0,
+  prob_label12 double precision DEFAULT 0,
+  prob_label13 double precision DEFAULT 0,
+  prob_label14 double precision DEFAULT 0,
+  prob_label15 double precision DEFAULT 0,
+  prob_label16 double precision DEFAULT 0,
+  prob_label17 double precision DEFAULT 0,
+  prob_label18 double precision DEFAULT 0,
+  prob_label19 double precision DEFAULT 0,
+  prob_label20 double precision DEFAULT 0
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE probability
+  OWNER TO postgres;
+COMMENT ON COLUMN probability.attr_id IS '
+';
+
+
+-- Index: index_prob
+
+-- DROP INDEX index_prob;
+
+CREATE INDEX index_prob
+  ON probability
+  USING btree
+  (attr_id, attr_value);

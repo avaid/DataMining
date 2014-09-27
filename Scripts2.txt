@@ -1,0 +1,4 @@
+INSERT INTO "Attr_Label_Count"(
+            attr_id, attr_value, label, count)
+ (SELECT attr_id, attr_value, label,count(*)
+  FROM "TrainingData" group by attr_id,attr_value, label)
